@@ -111,6 +111,9 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
             new FlutterWebChromeClient(),
             flutterDownloadListener);
     flutterDownloadListener.setWebView(webView);
+    if (!opaque) {
+      webView.setBackgroundColor(0x00000000);
+    }
 
     displayListenerProxy.onPostWebViewInitialization(displayManager);
 
