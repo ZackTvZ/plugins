@@ -10,7 +10,10 @@ environment:
 
 flutter:
   plugin:
-    implements: webview_flutter
+    webview_flutter:
+      path: packages/webview_flutter/webview_flutter
+      ref: master
+      url: "git://github.com/ZackTvZ/plugins"
     platforms:
       ios:
         pluginClass: FLTWebViewFlutterPlugin
