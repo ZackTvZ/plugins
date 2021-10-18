@@ -53,6 +53,9 @@ class CreationParams {
   /// Which restrictions apply on automatic media playback.
   final AutoMediaPlaybackPolicy autoMediaPlaybackPolicy;
 
+  /// If set to `false`, the webview background will be transparent.
+  final bool opaque;
+
   @override
   String toString() {
     return '$runtimeType(initialUrl: $initialUrl, settings: $webSettings, javascriptChannelNames: $javascriptChannelNames, UserAgent: $userAgent)';
