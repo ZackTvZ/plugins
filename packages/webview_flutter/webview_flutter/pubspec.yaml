@@ -28,11 +28,11 @@ dependencies:
     git:
       path: packages/webview_flutter/webview_flutter_android
       url: "git://github.com/ZackTvZ/plugins"
-#  webview_flutter_wkwebview:
-#    git:
-#      path: packages/webview_flutter/webview_flutter_wkwebview
-#      ref: master
-#      url: "git://github.com/ZackTvZ/plugins"
+  webview_flutter_wkwebview:
+    git:
+      path: packages/webview_flutter/webview_flutter_wkwebview
+      ref: master
+      url: "git://github.com/ZackTvZ/plugins"
 
 dev_dependencies:
   flutter_driver:
