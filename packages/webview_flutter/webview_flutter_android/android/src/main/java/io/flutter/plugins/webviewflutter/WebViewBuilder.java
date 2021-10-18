@@ -30,10 +30,10 @@ public class WebViewBuilder {
      *     IME, thread (see also {@link InputAwareWebView})
      * @return A new instance of the {@link android.webkit.WebView} object.
      */
-    static WebView create(Context context, boolean usesHybridComposition, View containerView) {
+    static WebView create(Context context, boolean usesHybridComposition, View containerView, boolean opaque) {
       return usesHybridComposition
           ? new WebView(context)
-          : new InputAwareWebView(context, containerView);
+          : new InputAwareWebView(context, containerView, opaque);
     }
   }
 
@@ -41,6 +41,7 @@ public class WebViewBuilder {
   private final View containerView;
 
   private boolean enableDomStorage;
+  private boolean opaque;
   private boolean javaScriptCanOpenWindowsAutomatically;
   private boolean supportMultipleWindows;
   private boolean usesHybridComposition;
@@ -56,9 +57,10 @@ public class WebViewBuilder {
    *     {@code false}. Used to create an InputConnection on the WebView's dedicated input, or IME,
    *     thread (see also {@link InputAwareWebView})
    */
-  WebViewBuilder(@NonNull final Context context, View containerView) {
+  WebViewBuilder(@NonNull final Context context, View containerView, boolean opaque) {
     this.context = context;
     this.containerView = containerView;
+    this.opaque = opaque;
   }
 
   /**
@@ -142,7 +144,7 @@ public class WebViewBuilder {
    * @return The {@link android.webkit.WebView} using the current settings.
    */
   public WebView build() {
-    WebView webView = WebViewFactory.create(context, usesHybridComposition, containerView);
+    WebView webView = WebViewFactory.create(context, usesHybridComposition, containerView, opaque);
 
     WebSettings webSettings = webView.getSettings();
     webSettings.setDomStorageEnabled(enableDomStorage);

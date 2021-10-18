@@ -95,6 +95,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
     DisplayManager displayManager =
         (DisplayManager) context.getSystemService(Context.DISPLAY_SERVICE);
     displayListenerProxy.onPreWebViewInitialization(displayManager);
+    boolean opaque = (boolean) params.get("opaque");
 
     this.methodChannel = methodChannel;
     this.methodChannel.setMethodCallHandler(this);
@@ -105,7 +106,7 @@ public class FlutterWebView implements PlatformView, MethodCallHandler {
         new FlutterDownloadListener(flutterWebViewClient);
     webView =
         createWebView(
-            new WebViewBuilder(context, containerView),
+            new WebViewBuilder(context, containerView, opaque),
             params,
             new FlutterWebChromeClient(),
             flutterDownloadListener);
